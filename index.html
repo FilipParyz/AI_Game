@@ -3,6 +3,9 @@
 <head>
     <title>Paragraph Game</title>
     <style>
+        body {
+            background-color: rgba(158, 106, 38, 0.522);
+        }
         img {
             max-width: 50%;
             max-height: 650px;
@@ -15,48 +18,69 @@
 <body>
     <div id="game-container">
         <h1>Ścieżka Baristy</h1>
-        <img id="image" src="" alt="Game Image">
+        <img id="image/image" src="" alt="Game Image">
         <p id="description"></p>
         <div id="choices"></div>
+        <br>
         <button id="back-slide-button">Wróć o jeden slajd.</button>
         <button id="back-to-beginning-button">Wróć do początku.</button>
+        <br>
+        <button id="Play">Odtwórz</button>
+        <button id="Stop">Stop</button>
+        <input type="checkbox" id="AutoPlay" name="AutoPlay" value="AutoPlay">AutoPlay</input>
     </div>
 
     <script>
         // Game data
+        
         const gameData = [
             {
-                image: "image0.png",
-                description: "Jesteś młodym studentem, który właśnie dostał pracę jako barista w renomowanej kawiarni specialty o nazwie 'Kafo'. Twoim menadżerem jest tajemniczy i doświadczony Julian, który jest uważany za eksperta w świecie kawy. Przybywasz na swoją pierwszą zmianę pracy z ekscytacją i niepewnością.",
+                image: "image/image0.png",
+                description: "Jesteś młodym studentem, który właśnie dostał pracę jako barista w renomowanej kawiarni specialty o nazwie 'Kafo'.\n\
+                                Twoim menadżerem jest tajemniczy i doświadczony Julian, który jest uważany za eksperta w świecie kawy.\n\
+                                Przybywasz na swoją pierwszą zmianę pracy z ekscytacją i niepewnością.",
                 choices: [
                     { text: "Rozpocznij swój pierwszy dzień!", next: 1 }
-                ]
+                ],
+                recording: "audio/audio0.mp3"
             },
             {
-                image: "image1a.png",
+                image: "image/image1a.png",
                 description: "Wchodzisz do kawiarni i widzisz Juliana stojącego przy ekspresie kolbowym.\n\
                                 Julian: Witaj w 'Kafo'. Jestem Julian, zarządzam barem i załogą.\n\
-                                Gracz: Cześć Julian, bardzo się cieszę że w końcu Cię poznałem! Jestem gotowy do nauki.\n\
+                                Gracz: Cześć Julian, bardzo się cieszę że w końcu Cię poznałam! Jestem gotowa do nauki.\n\
                                 Julian: Super! Zaczynamy od podstaw. Czego chciałbyś się nauczyć najpierw?",
                 choices: [
                     { text: "Nauka o czystości na stanowisku pracy.", next: 2 },
                     { text: "Nauka pienienia mleka do kaw mlecznych.", next: 7 },
                     { text: "Nauka ekstrakcji espresso.", next: 6 },
+                ],
+                recording: [
+                                "audio/audio1.mp3",
+                                "audio/audio1a.mp3",
+                                "audio/audio1b.mp3",
+                                "audio/audio1c.mp3"
                 ]
             },
             {
-                image: "image4.png",
+                image: "image/image4.png",
                 description: "Julian: Teraz porozmawiamy o czystości na stanowisku pracy. Musisz regularnie czyścić powierzchnie, na których pracujesz. Jakie środki czyszczące użyć?\n\
                             Gracz: Czy używamy specjalnych środków do czyszczenia czy można użyć zwykłego mydła?\n\
                             Julian: Dobre pytanie! Tutaj używamy specjalnych środków do czyszczenia, które są dostosowane do naszych urządzeń i powierzchni.\n\
-                            Gracz: Jasne, będę pamiętał o tym. Możesz mi teraz pokazać jak czyścić ... ?",
+                            Gracz: Jasne, będę o tym pamiętała. Możesz mi teraz pokazać jak czyścić ... ?",
                 choices: [
                     { text: "Ekspres kolbowy", next: 3 },
                     { text: "Młynek", next: 5 }
+                ],
+                recording: [
+                                "audio/audio2a.mp3",
+                                "audio/audio2b.mp3",
+                                "audio/audio2c.mp3",
+                                "audio/audio2d.mp3"
                 ]
             },
             {
-                image: "image3.png",
+                image: "image/image3.png",
                 description: "Julian: Przystąpimy teraz do czyszczenia ekspresu. Wiesz jaka część ekspresu brudzi się najczęściej i wymaga regularnego czyszczenia?\n\
                             Gracz: Nie, nie wiem.\n\
                             Julian: To jest grupa. Grupa jest częścią ekspresu, która jest odpowiedzialna za ekstrakcję espresso. Jest to część, która wymaga najwięcej uwagi i czyszczenia.\n\
@@ -66,10 +90,19 @@
                             Gracz: Dzięki!",
                 choices: [
                     { text: "Pokażę Ci jeszcze jeden ważny element czyszczenia ekspresu!", next: 4 }
+                ],
+                recording: [
+                                "audio/audio3a.mp3",
+                                "audio/audio3b.mp3",
+                                "audio/audio3c.mp3",
+                                "audio/audio3d_Rozumiem.mp3",
+                                "audio/audio3e_PokazeCi.mp3",
+                                "audio/audio3f.mp3",
+                                "audio/audio3g_Dzieki.mp3"
                 ]
             },
             {
-                image: "image3.png",
+                image: "image/image3.png",
                 description: "Julian: Poza grupą, ważne jest też, żeby dbać o spieniacz do mleka. Czy wiesz, dlaczego to takie istotne?\n\
                             Gracz: Tak, ponieważ mleko jest bardzo wrażliwe na bakterie.\n\
                             Julian: Dokładnie! Jeśli nie jest ono czyszczone regularnie, to może się zepsuć.\n\
@@ -78,10 +111,17 @@
                 choices: [
                     { text: "Pora wyczyścić młynek!", next: 5 },
                     { text: "Może chcesz teraz zaparzyć swoją pierwszą kawę?", next: 6 }
+                ],
+                recording: [
+                            "audio/audio4a.mp3",
+                            "audio/audio4b.mp3",
+                            "audio/audio4c.mp3",
+                            "audio/audio4d.mp3",
+                            "audio/audio4e.mp3"
                 ]
             },
             {
-                image: "image4-grinder.png",
+                image: "image/image4-grinder.png",
                 description: "Julian: Skupmy się na czymś, co jest równie ważne jak umiejętność parzenia doskonałej kawy – na czyszczeniu młynka. Czy wiesz, dlaczego to takie istotne?\n\
                             Gracz: Nie, dlaczego?\n\
                             Julian: Młynki do kawy są bardzo wrażliwe, a od poziomu zmielenia kawy bardzo zależy, czy kawa będzie dobra, czy nie.\n\
@@ -92,10 +132,19 @@
                 choices: [
                     { text: "Super, teraz wyczyścimy ekspres!", next: 3 },
                     { text: "Skoro młynek jest czysty, to może chcesz teraz żebym nauczył Cię go obsługiwać?", next: 8 }
+                ],
+                recording: [
+                            "audio/audio5a.mp3",
+                            "audio/audio5b_NieDlaczego.mp3",
+                            "audio/audio5c.mp3",
+                            "audio/audio3d_Rozumiem.mp3",
+                            "audio/audio3e_PokazeCi.mp3",
+                            "audio/audio5f.mp3",
+                            "audio/audio3g_Dzieki.mp3"
                 ]
             },
             {
-                image: "image3.png",
+                image: "image/image3.png",
                 description: "Julian: Porozmawiajmy o ekstrakcji espresso, czyli w skrócie wydobyciu z ziarna kawowca, napoju w formie espresso.\n\
                             Używamy do tego głównie ekspresu ciśnieniowego który widzisz po mojej lewej.\n\
                             Ekstrakcja to proces, w którym woda pod wysokim ciśnieniem przechodzi przez zmieloną kawę i wyciąga z niej wiele wartościowych da nasz składników.\n\
@@ -108,46 +157,71 @@
                 choices: [
                     { text: "Espresso gotowe, spienimy teraz mleko.", next: 7 },
                     { text: "To chyba wszystko na dziś. Mycie baru zostawimy na jutro.", next: 9 },
+                ],
+                recording: [
+                            "audio/audio6a.mp3",
+                            "audio/audio6b.mp3",
+                            "audio/audio6c.mp3",
+                            "audio/audio6d.mp3",
+                            "audio/audio6e.mp3"
                 ]
             },
             {
-                image: "image5.png",
+                image: "image/image5.png",
                 description: "Julian: Teraz porozmawiamy o pienieniu mleka.\n\
                             Gracz: Czyli o tym jak zrobić latte art?\n\
-                            Julian: Nie, nie o tym.\n\
-                            Gracz: A o czym?\n\
-                            Julian: O tym jak zrobić dobrą piankę mleczną. Zanim przejdziemy do latte art'ów, musimy mieć czyć je robić.\n\
-                            Gracz: Aha, rozumiem.\n\
+                            Julian: Nie, nie o tym. O tym jak zrobić dobrą piankę mleczną. Zanim przejdziemy do latte art'ów, musimy mieć czyć je robić.\n\
+                            Gracz: Okej, rozumiem. Zamieniam się w słuch!\n\
                             Julian: Spieniając mleko musimy zadbać o kilka rzeczy. Struktura mleka do której dążymy jest zależna od tego, do jakiej kawy będziemy go używać.\n\
                             Do kawy latte mleko powinno być bardziej płynne, a do cappuccino bardziej gęste.\n\
                             Jednak nie zależnie do jakiej kawy spieniamy mleko, najważniejsze jest to żeby go nie przypalić.\n\
                             Mleko powyżej 65*C zaczyna się przypalać i traci swoje właściwości i słodycz.\n\
-                            Gracz: Wow nie wiedziałem!",
+                            Gracz: Wow! Nie wiedziałam!",
                 choices: [
                     { text: "Mamy już spienione mleko, chcesz zaparzyć kawę?", next: 6 },
                     { text: "To chyba wszystko na dziś. Mycie baru zostawimy na jutro.", next: 9 }
+                ],
+                recording: [
+                            "audio/audio7a.mp3",
+                            "audio/audio7b.mp3",
+                            "audio/audio7c.mp3",
+                            "audio/audio7d.mp3",
+                            "audio/audio7e.mp3",
+                            "audio/audio7f.mp3"
                 ]
             },
             {
-                image: "image4-grinder.png",
+                image: "image/image4-grinder.png",
                 description: "Julian: Żeby przejść do ekstrakcji kawy, najpierw musimy prawidłowo zmielić kawę.\n\
                             Aby to zrobić, musimy najpierw ustawić młynek, żeby kawa była zmielona na odpowiednią grubość.\n\
                             Od grubości zmielenia zależy jak szybko woda będzie przechodzić przez kawę i ile ta woda zdoła wyciągnąć z ziarna.\n\
-                            Gracz: Aha, rozumiem.\n\
-                            Julian: Dobrze, to teraz pokażę Ci jak to zrobić.\n\
+                            Gracz: Rozumiem.\n\
+                            Julian: Nauczę Cię teraz jak ustawić młynek. Trzeba to robić codziennie rano, przed otwarciem.\n\
                             *Julian pokazuje jak ustawić młynek*\n\
                             Gracz: Dzięki!",
                 choices: [
                     { text: "Teraz możemy zaparzyć kawę!", next: 6 }
+                ],
+                recording: [
+                            "audio/audio8a.mp3",
+                            "audio/audio3d_Rozumiem.mp3",
+                            "audio/audio8c.mp3",
+                            "audio/audio8d.mp3",
+                            "audio/audio3g_Dzieki.mp3",
                 ]
             },
             {
-                image: "image6.png",
+                image: "image/image6.png",
                 description: "Julian: Dzięki za dzisiaj!\n\
-                            Gracz: Dzięki za naukę, jutro zobaczymy się na kolejnej zmianie.\n\
+                            Gracz: Dzięki za naukę! Jutro zobaczymy się na kolejnej zmianie.\n\
                             Julian: Do zobaczenia!",
                 choices: [
                     { text: "Koniec gry", next: 0 }
+                ],
+                recording: [
+                            "audio/audio9a.mp3",
+                            "audio/audio9b.mp3",
+                            "audio/audio9c.mp3",
                 ]
             }
         ];
@@ -156,12 +230,11 @@
         let currentStep = 0;
         let previousStep = [];
 
-        // Function to update the game UI
+        // Function to update the game UI and play the recording file
         function updateGameUI() {
-            console.log("Current step: " + currentStep);
-            console.log("Previous steps: " + previousStep);
+            
             const currentGameData = gameData[currentStep];
-            const imageElement = document.getElementById("image");
+            const imageElement = document.getElementById("image/image");
             const descriptionElement = document.getElementById("description");
             const choicesElement = document.getElementById("choices");
 
@@ -179,6 +252,12 @@
                 });
                 choicesElement.appendChild(choiceButton);
             });
+            audios = [];
+            playRecording(currentGameData.recording);
+            const audioAutoPlay = document.getElementById("AutoPlay");
+            if (audioAutoPlay.checked) {
+                audios[0].play();
+            }
         }
         
         const backSlideButton = document.getElementById("back-slide-button");
@@ -196,7 +275,38 @@
             updateGameUI();
         });
 
-        // Initialize the game
+        let audios = [];
+
+        function playRecording(recording) {
+            if (Array.isArray(recording)) {
+                recording.forEach((recordingFile, index) => {
+                    let audio = new Audio(recordingFile);
+                    audio.addEventListener("ended", () => {
+                        if (index < recording.length - 1) {
+                            audios[index + 1].play();
+                        }
+                    });
+                    audios.push(audio);
+                });
+            } else {
+                const audio = new Audio(recording);
+                audios.push(audio);
+            }
+        }
+
+        const audioPlay = document.getElementById("Play");
+        audioPlay.addEventListener("click", () => {
+            audios[0].play();
+        });
+
+        const audioStop = document.getElementById("Stop");
+        audioStop.addEventListener("click", () => {
+            audios.forEach(audio => {
+                audio.pause();
+            });
+        });
+
         updateGameUI();
     </script>
 </body>
+</html>
